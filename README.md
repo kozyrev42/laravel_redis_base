@@ -3,3 +3,12 @@
 `php -S 127.0.0.1:8000 -t public`
 
 1. Установка проекта: `composer create-project --prefer-dist laravel/laravel laravel_redis_base "9.*"`
+
+2. Установка пакета для работы с Redis: `composer require predis/predis` 
+
+Прописать в config/database.php:
+
+'redis' => [
+    'client' => env('REDIS_CLIENT', 'predis'),
+    // ...
+]
