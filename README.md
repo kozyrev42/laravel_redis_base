@@ -17,3 +17,7 @@
 `php artisan make:model Post -mf`
 
 Поправил миграцию, настроил модель и фабрику.
+
+4. Прописываем в .env CACHE_DRIVER=redis
+- тогда будут браться настройки из config/cache.php из массива 'redis'
+- чтобы фасад CACHE работал с Redis-ом,
