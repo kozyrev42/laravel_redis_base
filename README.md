@@ -21,3 +21,16 @@
 4. Прописываем в .env CACHE_DRIVER=redis
 - тогда будут браться настройки из config/cache.php из массива 'redis'
 - чтобы фасад CACHE работал с Redis-ом,
+
+5. Настроил ПРЕФИКС:ключа:
+- в config/database.php поправил:
+`'prefix' => env('REDIS_PREFIX')`
+
+- в config/cache.php поправил:
+`'prefix' => env('CACHE_PREFIX'),`
+
+- в .env прописал:
+REDIS_PREFIX=laravel:
+
+теперь к ключу будет добавляться префикс laravel:
+пример: laravel:my-key-4
