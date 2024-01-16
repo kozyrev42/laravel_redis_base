@@ -39,12 +39,17 @@ class PostCreate extends Command
             'content' => 'текст поста',
         ];
 
+        // генерируем "user_id", это пробный пользователь, сразу добавляем в $data
+        $data['user_id'] = rand(1, 100);
+
         // создаем новый пост в базе 
         $post = Post::create($data);
 
         // если пост создан, то записываем его в редис
         if ($post) {
-            Cache::put('posts:' . $post->id, $post);
+            $key = 'posts:' . $post->id;
+            $value = $post;
+            Cache::put($key, $value);
         }
 
         $this->info('ok');
